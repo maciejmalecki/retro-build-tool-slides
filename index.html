@@ -8,7 +8,8 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/night.css">
+		<link rel="stylesheet" href="dist/custom.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
@@ -16,8 +17,28 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section data-markdown>
+					<textarea data-template>
+						# Retro Build Tool
+						### Maciej Małecki
+						Commodore Users Europe, December, 2021<!-- .element: class="cyan"-->
+						---
+						# About me
+						---
+						## My CBM projects
+
+						* I'm a big fan of KickAssembler.
+						* [c64lib](https://github.com/c64lib/) - generic purpose library written in KickAss.
+						* [copper64](https://github.com/c64lib/copper64/) - display list approach to the VIC-II IRQs.
+						* [T-Rex 64](https://github.com/maciejmalecki/trex64/) - a simple run&jump game.
+						* Retro Assembler Build tool<!-- .element: class="fragment cyan"-->
+						---
+						## Build tool
+						### my motivation
+						---
+						# How does it work?
+					</textarea>
+				</section>
 			</div>
 		</div>
 
@@ -31,7 +52,8 @@
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
-
+				slideNumber: "c/t",
+				width: 1050,
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
