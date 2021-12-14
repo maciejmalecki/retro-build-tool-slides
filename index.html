@@ -20,44 +20,163 @@
 				<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
 					<textarea data-template>
 						# Retro Build Tool
-						### Maciej Małecki
+						### Maciej Małecki<!-- .element: class="pink"-->
 						Commodore Users Europe, December, 2021<!-- .element: class="cyan"-->
 
 						--
 
-						## About me
+						## about me
 
 						* A Commodore 64 user 1990-1994 and 2016-now.
-						* Learned BASIC and ASM on it.
-						* A professional software developer.
+						* Learned `BASIC` and `ASM` on it.
+						* Currently writing software for money.
+						* Always wanted to code games for C64.<!-- .element: class="cyan"-->
+						* Never dared to code demos, but it would be cool, too!<!-- .element: class="pink"-->
 
 						---
 
-						## Coding in MOS6502 assembly
-
-						* Cross development tools.
-						* KickAssembler.
-						* OpenSource on GitHub.
-						* Lack of CI support.
+						## continuous integration
+						# automate<!-- .element: class="pink"-->
+						# fail fast<!-- .element: class="cyan"-->
 
 						--
 
-						## What does "CI" stand for?
-
-						* Continuous Integration.
-						* Build automation.
-						* Automated quality assurance.
-						* Development environment consistency.
-						* "Fail early" approach.
-
-						--
-
-						## Why "make" is not enough?
+						<!-- .slide: class="cyan" -->
+						## why `make` is not enough?
 
 						* Questionable portability.
 						* Aging ;-)
 						* A lot of work to set up new project...
 						* ... or copy and paste the old one.
+
+						---
+
+						### what if we can make it *very* simple?
+
+						```
+						.
+						..
+						demo.asm
+						build.gradle
+						```
+
+						`build.gradle`:
+						``` groovy[]
+						plugins {
+							id "com.github.c64lib.retro-assembler" version "1.5.1"
+						}
+						retroProject {
+							dialect = "KickAssembler"
+							dialectVersion = "5.23"
+						}
+						```
+
+						--
+
+						## ...and run it<!-- .element: class="cyan"-->
+
+						from command line<!-- .element: class="pink"-->
+
+						```
+						gradle build
+						```
+
+						![flow](img/flow.png)
+
+						--
+
+						## preprocessors
+
+						Already supported: Charpad, Spritepad, Goattracker.
+
+						```groovy[|8|9-23|24-31|32-38]
+						plugins {
+							id "com.github.c64lib.retro-assembler" version "1.5.1"
+						}
+						retroProject {
+							dialect = "KickAssembler"
+							dialectVersion = "5.23"
+						}
+						preprocess {
+							charpad {
+								input = file("logo.ctm")
+								outputs {
+									charset {
+										output = file("charset.bin")
+									}
+									map {
+										output = file("map.bin")
+										left = 0
+										top = 12
+										right = 250
+										bottom = 24
+									}
+								}
+							}
+							spritepad {
+								input = file("player.spd")
+								outputs {
+									sprites {
+										output = file("player.bin")
+									}
+								}
+							}
+							goattracker {
+								input = file("music.sng")
+								music {
+									output = file("music.sid")
+									playerMemoryLocation = 0xF5
+								}
+							}
+						}
+						```
+
+						--
+
+						![Preprocessors](img/preprocessors.png)
+
+						---
+
+						# demo #1
+						### a simple image viewer
+
+						---
+
+						### using *CircleCI*
+
+						Free to use.
+						Integrates with `GitHub` and others.
+						Offers consistent environment, running headless in the cloud.
+
+						![ci flow](img/ci-flow.png)
+
+						There is a Docker image with `vice`, `goattracker`, `exomizer` and `java` preinstalled.
+
+						--
+
+						![CircleCI](img/circleci.png)
+
+						---
+
+						# demo #2
+						### continuous integration
+
+						---
+
+						## summary
+						(roadmap)<!-- .element: class="cyan"-->
+
+						![Roadmap](img/roadmap.png)
+
+						--
+
+						### find it on GitHub
+						source code, releases, documentation<!-- .element: class="cyan"-->
+
+						![QR Code](img/qr-github.png)
+
+						https://github.com/c64lib/gradle-retro-assembler-plugin
+
 					</textarea>
 
 				</section>
