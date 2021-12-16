@@ -22,15 +22,17 @@
 						# Retro Build Tool
 						### Maciej Małecki<!-- .element: class="pink"-->
 
-						Twitter: @mmalecki77
-
-						https://github.com/maciejmalecki/
-
 						*Commodore Users Europe, December, 2021*<!-- .element: class="cyan"-->
 
 						--
 
-						## about me
+						# about me
+
+						Twitter: @mmalecki77
+
+						https://github.com/maciejmalecki/
+
+						----
 
 						A Commodore 64 user 1990-1994 and 2016-now.
 
@@ -39,8 +41,6 @@
 						Working as software developer: `Java`, `Kotlin`, `JS`, `TS`.
 
 						Always wanted to code games for C64.<!-- .element: class="cyan fragment"-->
-
-						Never dared to code demos, but it would be cool, too!<!-- .element: class="pink fragment"-->
 
 						---
 
@@ -55,7 +55,7 @@
 						# automate<!-- .element: class="pink fragment"-->
 						# fail fast<!-- .element: class="cyan fragment"-->
 
-						---
+						--
 
 						## why `make` is not enough?
 
@@ -63,40 +63,6 @@
 						* It is ageing ;-)
 						* A lot of work to set up new project...<!-- .element: class="cyan"-->
 						* ... or copy and paste the old one.<!-- .element: class="pink fragment"-->
-
-						--
-
-						### what if we can make it *very* simple?
-
-						```
-						.
-						..
-						demo.asm
-						build.gradle
-						```
-
-						`build.gradle`:
-						``` groovy[]
-						plugins {
-							id "com.github.c64lib.retro-assembler" version "1.5.1"
-						}
-						retroProject {
-							dialect = "KickAssembler"
-							dialectVersion = "5.23"
-						}
-						```
-
-						--
-
-						## ...and run it<!-- .element: class="cyan"-->
-
-						from command line<!-- .element: class="pink"-->
-
-						```
-						gradle build
-						```
-
-						![flow](img/flow.png)
 
 						---
 
@@ -118,10 +84,6 @@
 						![ci flow](img/ci-flow.png)
 
 						There is a Docker image with `vice`, `goattracker`, `exomizer` and `java` preinstalled.
-
-						--
-
-						![CircleCI](img/circleci.png)
 
 						---
 
