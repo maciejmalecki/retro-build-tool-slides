@@ -21,7 +21,12 @@
 					<textarea data-template>
 						# Retro Build Tool
 						### Maciej Małecki<!-- .element: class="pink"-->
-						Commodore Users Europe, December, 2021<!-- .element: class="cyan"-->
+
+						Twitter: @mmalecki77
+
+						https://github.com/maciejmalecki/
+
+						*Commodore Users Europe, December, 2021*<!-- .element: class="cyan"-->
 
 						--
 
@@ -39,11 +44,18 @@
 
 						---
 
-						## continuous integration
-						# automate<!-- .element: class="pink"-->
-						# fail fast<!-- .element: class="cyan"-->
+						## cross development<!-- .element: class="pink"-->
+						# KickAss
+						### VSC, Relaunch64, Sublime, ...
+						but what is missing?<!-- .element: class="cyan fragment"-->
 
 						--
+
+						## continuous integration
+						# automate<!-- .element: class="pink fragment"-->
+						# fail fast<!-- .element: class="cyan fragment"-->
+
+						---
 
 						## why `make` is not enough?
 
@@ -52,7 +64,7 @@
 						* A lot of work to set up new project...<!-- .element: class="cyan"-->
 						* ... or copy and paste the old one.<!-- .element: class="pink fragment"-->
 
-						---
+						--
 
 						### what if we can make it *very* simple?
 
@@ -86,62 +98,14 @@
 
 						![flow](img/flow.png)
 
-						--
-
-						## preprocessors
-
-						Already supported: Charpad, Spritepad, Goattracker.
-
-						```groovy[|8|9-23|24-31|32-38]
-						plugins {
-							id "com.github.c64lib.retro-assembler" version "1.5.1"
-						}
-						retroProject {
-							dialect = "KickAssembler"
-							dialectVersion = "5.23"
-						}
-						preprocess {
-							charpad {
-								input = file("logo.ctm")
-								outputs {
-									charset {
-										output = file("charset.bin")
-									}
-									map {
-										output = file("map.bin")
-										left = 0
-										top = 12
-										right = 250
-										bottom = 24
-									}
-								}
-							}
-							spritepad {
-								input = file("player.spd")
-								outputs {
-									sprites {
-										output = file("player.bin")
-									}
-								}
-							}
-							goattracker {
-								input = file("music.sng")
-								music {
-									output = file("music.sid")
-									playerMemoryLocation = 0xF5
-								}
-							}
-						}
-						```
-
-						--
-
-						![Preprocessors](img/preprocessors.png)
-
 						---
 
 						# demo #1
-						### a simple image viewer
+						### display a multic
+
+						---
+
+						![Preprocessors](img/preprocessors.png)
 
 						---
 
